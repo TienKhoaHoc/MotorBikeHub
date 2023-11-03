@@ -178,7 +178,7 @@ const Filters = () => {
 
         <hr className="my-4" />
 
-        <h3 className="font-semibold mb-2">Ratings</h3>
+        <h3 className="font-semibold mb-2">Đánh giá</h3>
         <ul className="space-y-1">
           <li>
             {[5, 4, 3, 2, 1].map((rating) => (

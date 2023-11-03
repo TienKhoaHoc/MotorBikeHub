@@ -1,10 +1,13 @@
 "use client";
 
+import AuthContext from "@/context/AuthContext";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 
 const Sidebar = () => {
+  const { user } = useContext(AuthContext);
+
   const logoutHandler = () => {
     signOut();
   };
@@ -12,49 +15,51 @@ const Sidebar = () => {
   return (
     <aside className="md:w-1/3 lg:w-1/4 px-4">
       <ul className="sidebar">
-        <>
-          <li>
-            {" "}
-            <Link
-              href="/admin/products/new"
-              className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
-            >
-              Thêm Sản Phẩm Mới <span className="text-red-500">(Admin)</span>
-            </Link>
-          </li>
+        {user?.role === "admin" && (
+          <>
+            <li>
+              {" "}
+              <Link
+                href="/admin/products/new"
+                className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
+              >
+                New Product <span className="text-red-500">(Admin)</span>
+              </Link>
+            </li>
 
-          <li>
-            {" "}
-            <Link
-              href="/admin/products"
-              className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
-            >
-              Tất Cả Sản Phẩm <span className="text-red-500">(Admin)</span>
-            </Link>
-          </li>
+            <li>
+              {" "}
+              <Link
+                href="/admin/products"
+                className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
+              >
+                All Products <span className="text-red-500">(Admin)</span>
+              </Link>
+            </li>
 
-          <li>
-            {" "}
-            <Link
-              href="/admin/orders"
-              className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
-            >
-              Tất Cả Đơn Hàng <span className="text-red-500">(Admin)</span>
-            </Link>
-          </li>
+            <li>
+              {" "}
+              <Link
+                href="/admin/orders"
+                className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
+              >
+                All Orders <span className="text-red-500">(Admin)</span>
+              </Link>
+            </li>
 
-          <li>
-            {" "}
-            <Link
-              href="/admin/users"
-              className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
-            >
-              Tất Cả Tài Khoản <span className="text-red-500">(Admin)</span>
-            </Link>
-          </li>
+            <li>
+              {" "}
+              <Link
+                href="/admin/users"
+                className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
+              >
+                All Users <span className="text-red-500">(Admin)</span>
+              </Link>
+            </li>
 
-          <hr />
-        </>
+            <hr />
+          </>
+        )}
 
         <li>
           {" "}
@@ -62,7 +67,7 @@ const Sidebar = () => {
             href="/me"
             className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
           >
-            Thông Tin Của Bạn
+            Your Profile
           </Link>
         </li>
         <li>
@@ -71,7 +76,7 @@ const Sidebar = () => {
             href="/me/orders"
             className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
           >
-            Đơn Hàng
+            Orders
           </Link>
         </li>
         <li>
@@ -80,7 +85,7 @@ const Sidebar = () => {
             href="/me/update"
             className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
           >
-            Cập Nhập Thông Tin
+            Update Profile
           </Link>
         </li>
         <li>
@@ -89,7 +94,7 @@ const Sidebar = () => {
             href="/me/update_password"
             className="block px-3 py-2 text-gray-800 hover:bg-blue-100 hover:text-blue-500 rounded-md"
           >
-            Cập Nhập Mật Khẩu
+            Update Password
           </Link>
         </li>
 
@@ -99,7 +104,7 @@ const Sidebar = () => {
             className="block px-3 py-2 text-red-800 hover:bg-red-100 hover:text-white-500 rounded-md cursor-pointer"
             onClick={logoutHandler}
           >
-            Đăng Xuất
+            Logout
           </a>
         </li>
       </ul>

@@ -8,7 +8,7 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const router = useRouter;
+  const router = useRouter();
 
   useEffect(() => {
     setCartToState();
@@ -28,6 +28,7 @@ export const CartProvider = ({ children }) => {
     price,
     image,
     stock,
+    seller,
     quantity = 1,
   }) => {
     const item = {
@@ -36,6 +37,7 @@ export const CartProvider = ({ children }) => {
       price,
       image,
       stock,
+      seller,
       quantity,
     };
 
@@ -64,11 +66,26 @@ export const CartProvider = ({ children }) => {
     setCartToState();
   };
 
+  const saveOnCheckout = ({ amount, tax, totalAmount }) => {
+    const checkoutInfo = {
+      amount,
+      tax,
+      totalAmount,
+    };
+
+    const newCart = { ...cart, checkoutInfo };
+
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    setCartToState();
+    router.push("/shipping");
+  };
+
   return (
     <CartContext.Provider
       value={{
         cart,
         addItemToCart,
+        saveOnCheckout,
         deleteItemFromCart,
       }}
     >

@@ -51,7 +51,7 @@ const NewAddress = () => {
                   </h2>
 
                   <div className="mb-4 md:col-span-2">
-                    <label className="block mb-1"> Street* </label>
+                    <label className="block mb-1"> Địa Chỉ </label>
                     <input
                       className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                       type="text"
@@ -61,9 +61,9 @@ const NewAddress = () => {
                     />
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-x-3">
+                  {/* <div className="grid md:grid-cols-2 gap-x-3">
                     <div className="mb-4 md:col-span-1">
-                      <label className="block mb-1"> City </label>
+                      <label className="block mb-1"> Thành Phố </label>
                       <input
                         className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                         type="text"
@@ -74,7 +74,7 @@ const NewAddress = () => {
                     </div>
 
                     <div className="mb-4 md:col-span-1">
-                      <label className="block mb-1"> State </label>
+                      <label className="block mb-1"> Địa chỉ </label>
                       <input
                         className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                         type="text"
@@ -83,11 +83,11 @@ const NewAddress = () => {
                         onChange={(e) => setState(e.target.value)}
                       />
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="grid md:grid-cols-2 gap-x-2">
                     <div className="mb-4 md:col-span-1">
-                      <label className="block mb-1"> ZIP code </label>
+                      <label className="block mb-1"> Mã ZIP </label>
                       <input
                         className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                         type="number"
@@ -98,7 +98,7 @@ const NewAddress = () => {
                     </div>
 
                     <div className="mb-4 md:col-span-1">
-                      <label className="block mb-1"> Phone No </label>
+                      <label className="block mb-1"> Số điện thoại </label>
                       <input
                         className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                         type="number"
@@ -110,7 +110,7 @@ const NewAddress = () => {
                   </div>
 
                   <div className="mb-4 md:col-span-2">
-                    <label className="block mb-1"> Country </label>
+                    <label className="block mb-1"> Quốc gia </label>
                     <select
                       className="appearance-none border border-gray-200 bg-gray-100 rounded-md py-2 px-3 hover:border-gray-400 focus:outline-none focus:border-gray-400 w-full"
                       value={country}
@@ -128,7 +128,7 @@ const NewAddress = () => {
                     type="submit"
                     className="my-2 px-4 py-2 text-center w-full inline-block text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700"
                   >
-                    Add
+                    Thêm
                   </button>
                 </form>
               </div>
